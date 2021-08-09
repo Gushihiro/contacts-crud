@@ -1,0 +1,12 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+
+.listHead {
+  display: flex;
+  align-items: center;
+  width: 30%;
+  justify-content: space-around;
+}
