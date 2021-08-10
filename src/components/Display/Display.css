@@ -1,0 +1,12 @@
+.mainDisplay {
+  display: flex;
+  flex-direction: column;
+  width:50%
+}
+
+.editName {
+  display: flex;
+  justify-content: space-around;
+  width: 70%;
+  margin-top: 20vh;
+}

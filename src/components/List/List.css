@@ -2,11 +2,16 @@
   display: flex;
   flex-direction: column;
   width: 30%;
+  align-self: flex-start;
 }
 
 .listHead {
   display: flex;
   align-items: center;
   width: 30%;
-  justify-content: space-around;
+  justify-content: center;
+}
+
+.listhead > h1 {
+  margin-left: .25rem;
 }
