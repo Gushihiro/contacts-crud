@@ -1,10 +1,13 @@
-import { useState, useEffect, ReactNode } from 'react'
+import { useState, useEffect } from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Wrapper from './components/Wrapper'
 import Contact from './components/Contact'
 import List from './components/List'
 import Display from './components/Display'
+import ContactModal from './components/AddContactModal'
+import EmailModal from './components/AddEmailModal'
 
-import { getContacts, editEmail }  from './utils/Functions'
+import { getContacts }  from './utils/API'
 
 //Types
 
@@ -23,6 +26,12 @@ export type CurrentContactType = {
   emails: Array<string>,
 }
 
+export type NewContactType = {
+  firstName: string,
+  lastName: string,
+  emails: Array<string>
+}
+
 function App() {
   const [userData, setUserData] = useState([] as UserDataType[])
   const [currentContact, setCurrentContact] = useState({
@@ -31,46 +40,38 @@ function App() {
     lastName: "",
     emails: [""]
   })
-  const [firstName, setFirstName] = useState(currentContact.firstName)
-  const [lastName, setLastName] = useState(currentContact.lastName)
 
   const handleCurrentContact = (clickedContact: CurrentContactType) => {
     for (const user of userData) {
       if (clickedContact.id === user.id) {
         setCurrentContact(user)
-        if (user.firstName !== firstName) {
-          setFirstName(user.firstName)
-        }
-        if (user.lastName !== lastName) {
-          setLastName(user.lastName)
-        }
       }
     }
-    console.log(currentContact)
     return {...clickedContact}
   }
 
-  const handleFirstNameChange = (event: any) => {
-    setFirstName(event.target.value)
-  }
-  const handleLastNameChange = (event: any) => {
-    setLastName(event.target.value)
-  }
-  console.log(firstName)
+  const [openContact, setOpenContact] = useState(false)
+  const [openEmail, setOpenEmail] = useState(false)
+
   useEffect(() => {
     getContacts().then(res => {
       setUserData(res.data.contacts)
     })
   }, []) 
 
-  console.log(userData)
+
+
   return (
+    <Router>
     <div className="App">
+      <Route exact path='/'>
       <Wrapper>
-        <List>
+        <List
+          handleOpen={() => setOpenContact(true)}
+        >
           {userData.map((user: UserDataType, userIdx) => (
-            <Contact 
-              key={userIdx} 
+            <Contact
+              key={userIdx}
               user={user}
               handleCurrentContact={handleCurrentContact}
             />
@@ -78,14 +79,25 @@ function App() {
         </List>
         <Display
           currentContact={currentContact}
-          handleFirstNameChange={handleFirstNameChange}
-          handleLastNameChange={handleLastNameChange}
-          firstNameValue={firstName}
-          lastNameValue={lastName}
-        >
+          setCurrentContact={setCurrentContact}
+          handleOpenEmail={() => setOpenEmail(true)}
+        > 
         </Display>
+        <ContactModal
+          currentContact={currentContact}
+          handleClose={() => setOpenContact(false)}
+          openContact={openContact}
+        />
+        <EmailModal 
+          handleClose={() => setOpenEmail(false)}
+          openEmail={openEmail}
+          currentContact={currentContact}
+          setCurrentContact={setCurrentContact}
+        />
       </Wrapper>
+      </Route>
     </div>
+    </Router>
   );
 }
 
