@@ -32,4 +32,12 @@ const editContact = async(id: number, editContactData: CurrentContactType): Prom
   }
 }
 
-export { getContacts, editContact, addContact }
+const deleteContact = async(id: number): Promise<UserDataType[]> => {
+  try {
+    return await axios.delete(`https://avb-contacts-api.herokuapp.com/contacts/${id}`)
+  } catch (err) {
+    throw err
+  }
+}
+
+export { getContacts, editContact, addContact, deleteContact }

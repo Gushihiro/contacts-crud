@@ -1,12 +1,24 @@
 .mainDisplay {
   display: flex;
   flex-direction: column;
-  width:50%
+  align-items: space-around;
+  width:50%;
 }
 
 .editName {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  width: 70%;
+  margin-top: 10vh;
+}
+
+.contactEmails {
+  margin-top: 10vh;
+}
+
+.btnGroup {
   width: 70%;
   margin-top: 20vh;
+  display: flex;
+  justify-content: space-between;
 }

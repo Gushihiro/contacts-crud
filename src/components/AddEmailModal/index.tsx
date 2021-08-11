@@ -4,19 +4,22 @@ import { CurrentContactType } from '../../App'
 
 type Props = {
   openEmail: boolean,
-  handleClose: (boolean:boolean) => void,
+  setOpenEmail: (boolean:boolean) => void,
   currentContact: CurrentContactType,
   setCurrentContact: (object: CurrentContactType) => void
 }
 
-const AddEmailModal:React.FC<Props> = ({ handleClose, openEmail, currentContact, setCurrentContact }) => {
+const AddEmailModal:React.FC<Props> = ({ setOpenEmail, openEmail, currentContact, setCurrentContact }) => {
   const [newEmail, setNewEmail] = useState("")
   const pushEmail = () => {
     let pushEmailArray = currentContact.emails;
     pushEmailArray.push(newEmail)
     setCurrentContact({...currentContact, emails: pushEmailArray})
   }
-
+  const handleClose = () => {
+    setOpenEmail(false)
+    setNewEmail("")
+  }
   if(!openEmail) {
     return null
   }
@@ -38,7 +41,7 @@ const AddEmailModal:React.FC<Props> = ({ handleClose, openEmail, currentContact,
           <button onClick={() => pushEmail()}>Add Email</button>
           <button 
             className='closeBtn'
-            onClick={() => handleClose(false)}
+            onClick={() => handleClose()}
             >
             Close
           </button>

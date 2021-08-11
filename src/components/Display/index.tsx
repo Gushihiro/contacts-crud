@@ -1,3 +1,4 @@
+import { useHistory } from 'react-router-dom'
 import './Display.css'
 import { CurrentContactType } from '../../App'
 import { editContact } from '../../utils/API'
@@ -7,7 +8,7 @@ type Props = {
   handleOpenEmail: (boolean:boolean) => void
 }
 const Display: React.FC<Props> = ({ currentContact, setCurrentContact, handleOpenEmail }) => {
-
+  const contactEmail = currentContact.emails
   const handleEditForm = (e: any) => {
     e.preventDefault();
     editContact(currentContact.id, currentContact).then(res => {
@@ -38,10 +39,35 @@ const Display: React.FC<Props> = ({ currentContact, setCurrentContact, handleOpe
             </div>
           </div>
           <div className='contactEmails'>
-            {currentContact.emails.map((email, emailIdx) => <p key={emailIdx}>{email}</p>)}
-            <button onClick={() => handleOpenEmail(true)}>Add Email</button>
+            <h6>Emails</h6>
+              {currentContact.emails.map((email, emailIdx) =>
+                emailIdx===0?
+                <p key={emailIdx}>
+                  {email}
+                  <button 
+                  type='button'
+                  key={emailIdx}
+                  onClick={(e:any) => {
+                    for (const emails of currentContact.emails) {
+                      console.log(contactEmail)
+                      console.log(currentContact.emails[emailIdx])
+                      if (emails === contactEmail[emailIdx])
+                      contactEmail.splice(emailIdx)
+                      setCurrentContact({...currentContact, emails: contactEmail})
+                    }
+                  }}
+                  >
+                    x
+                  </button>
+                  </p>
+                  :<p key={emailIdx}>{email}</p>
+              )}
+            <button type='button' onClick={() => handleOpenEmail(true)}>Add Email</button>
           </div>
+          <div className='btnGroup'>
+          <button type='button' key={currentContact.id}>Delete</button>
           <button type='submit'>Save</button>
+          </div>
         </form>
       </div>
     )

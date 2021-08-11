@@ -1,5 +1,6 @@
 .wrapper {
   display:flex;
-  width: 98%;
+  width: 80%;
   justify-content: center;
+  margin: 0 auto;
 }

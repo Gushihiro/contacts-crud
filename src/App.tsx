@@ -89,7 +89,7 @@ function App() {
           openContact={openContact}
         />
         <EmailModal 
-          handleClose={() => setOpenEmail(false)}
+          setOpenEmail={setOpenEmail}
           openEmail={openEmail}
           currentContact={currentContact}
           setCurrentContact={setCurrentContact}
