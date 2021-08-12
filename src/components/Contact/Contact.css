@@ -1,4 +1,12 @@
 .userContact {
   font-size: 1.2rem;
-  margin: .5rem .25rem;
+  padding: .5rem .25rem;
+}
+.userContact:hover {
+  cursor: pointer
+}
+
+.userContact:focus {
+  background-color: rgba(137, 43, 226, 0.466);
+  color: white;
 }

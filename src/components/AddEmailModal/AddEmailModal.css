@@ -9,3 +9,7 @@
   align-items: center;
   justify-content: center;
 }
+
+.eml-modal-footer {
+  width: 80%
+}

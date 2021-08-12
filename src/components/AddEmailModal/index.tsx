@@ -28,19 +28,21 @@ const AddEmailModal:React.FC<Props> = ({ setOpenEmail, openEmail, currentContact
     <div className='emailModal'>
       <div className='modal-content'>
         <div className='modal-header'>
-          <h4 className='modal-title'>Add Email</h4>
+          <h1 className='modal-title'>Add Email</h1>
         </div>
         <div className="modal-body">
           {currentContact.emails.map((email, emailIdx) => (
             <p key={emailIdx}>{email}</p>
           ))}
 
-          <input type="text" value={newEmail} onChange={e => setNewEmail(e.target.value)}/>
+          <input type="text" className='modalInput' value={newEmail} onChange={e => setNewEmail(e.target.value)}/>
         </div>
-        <div className="modal-footer">
-          <button onClick={() => pushEmail()}>Add Email</button>
+        <div className="modal-footer eml-modal-footer">
           <button 
-            className='closeBtn'
+            className='btn mainAddBtn'
+            onClick={() => pushEmail()}>Add Email</button>
+          <button 
+            className='btn closeBtn'
             onClick={() => handleClose()}
             >
             Close

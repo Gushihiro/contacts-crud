@@ -1,17 +1,19 @@
 .list {
   display: flex;
   flex-direction: column;
-  width: 30%;
+  width: 20%;
   align-self: flex-start;
+  background-color: rgba(223, 162, 238, 0.13);
 }
 
 .listHead {
   display: flex;
   align-items: center;
-  width: 30%;
+  width: 70%;
   justify-content: center;
 }
 
-.listhead > h1 {
+  h1 {
   margin-left: .25rem;
+  color:rgb(73, 73, 73);;
 }

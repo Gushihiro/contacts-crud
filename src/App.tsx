@@ -41,6 +41,20 @@ function App() {
     emails: [""]
   })
 
+  const sortedData = (a:any, b:any) => {
+    const userA = a.firstName.toUpperCase();
+    const userB = b.firstName.toUpperCase();
+    
+    if (userA > userB) {
+      return 1;
+    } else if (userA < userB) {
+      return -1;
+    }
+    return 0
+  }
+  const sortedDataArray = userData.sort(sortedData);
+  console.log(sortedDataArray)
+  
   const handleCurrentContact = (clickedContact: CurrentContactType) => {
     for (const user of userData) {
       if (clickedContact.id === user.id) {
@@ -69,13 +83,15 @@ function App() {
         <List
           handleOpen={() => setOpenContact(true)}
         >
-          {userData.map((user: UserDataType, userIdx) => (
+          
+          {sortedDataArray.map((user: UserDataType, userIdx) => {
+            return (
             <Contact
               key={userIdx}
               user={user}
               handleCurrentContact={handleCurrentContact}
             />
-            ))}
+            )})}
         </List>
         <Display
           currentContact={currentContact}

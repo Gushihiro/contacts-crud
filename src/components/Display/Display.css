@@ -3,12 +3,42 @@
   flex-direction: column;
   align-items: space-around;
   width:50%;
+  background-color: rgb(255, 249, 242);
+  padding-left: 2vw;
+  padding-right: 2vw;
+}
+
+.mainDisplay > h1 {
+  text-align: center;
+}
+
+.firstNameBox, .lastNameBox {
+  width: 50%
+}
+
+h6 {
+  font-size: small;
+  margin-bottom: 1rem;
+}
+
+.startDisplay {
+  display: flex;
+  height: 50%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  text-align: center;
+}
+
+.startDisplay > h1 {
+  align-self: center;
 }
 
 .editName {
   display: flex;
   justify-content: space-between;
-  width: 70%;
+  width: 100%;
   margin-top: 10vh;
 }
 
@@ -17,8 +47,97 @@
 }
 
 .btnGroup {
-  width: 70%;
+  width: 90%;
   margin-top: 20vh;
   display: flex;
   justify-content: space-between;
+}
+
+.nameInput {
+  display: flex;
+  width: 90%;
+  height: 2rem;
+  justify-content: space-between;
+  background-color: rgba(137, 43, 226, 0.082);
+  border: 1px solid rgba(137, 43, 226, 0.308);
+  color:rgb(73, 73, 73);
+  font-size:large;
+}
+
+.nameInput:focus {
+  outline: none;
+  border: 2px solid rgba(99, 196, 241, 0.308);
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent !important;
+  border: none;
+}
+
+.btn:hover {
+  cursor: pointer
+}
+
+.mainAddBtn {
+  width: 7rem;
+  height: 2rem;
+  border: 1px solid rgba(97, 186, 228, 0.767);
+  color: rgba(8, 111, 158, 0.945)
+}
+
+.closeBtn {
+  width: 7rem;
+  height: 2rem;
+  border: 1px solid rgba(236, 37, 104, 0.767);
+  
+}
+
+.addEmlBtn {
+  font-size: medium;
+  color:rgba(97, 186, 228, 0.767)
+}
+
+.saveBtn {
+  color:rgba(97, 186, 228, 0.767);
+  border: 1px solid rgba(97, 186, 228, 0.767);
+  width: 7rem;
+  height: 2rem;
+}
+
+.cancelBtn {
+  color:rgba(41, 52, 56, 0.767);
+  border: 1px solid rgba(94, 98, 100, 0.767);
+  width: 7rem;
+  height: 2rem;
+}
+
+.deleteBtn {
+  color:rgba(250, 25, 36, 0.767);
+  border: 1px solid rgba(190, 14, 14, 0.74);
+  width: 7rem;
+  height: 2rem;
+}
+
+.emailGrp {
+  display: flex;
+}
+
+.cancelSave {
+  display: flex;
+  justify-content: space-between;
+  width: 40%
+}
+
+.MuiSvgIcon-root {
+  color: rgba(97, 186, 228, 0.767) !important;
+}
+.MuiSvgIcon-fontSizeSmall {
+  color:rgba(190, 14, 14, 0.74) !important;
+}
+
+.MuiSvgIcon-fontSizeLarge {
+  color: rgba(97, 186, 228, 0.767) !important;
 }

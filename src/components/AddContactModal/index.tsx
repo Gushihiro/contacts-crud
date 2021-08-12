@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './AddContactModal.css'
 import { CurrentContactType } from '../../App'
 import { addContact } from '../../utils/API'
+import AddCircleIcon from '@material-ui/icons/AddCircle'
 
 type Props = {
   openContact: boolean,
@@ -26,10 +27,12 @@ const AddContactModal: React.FC<Props> = ({ handleClose, openContact }) => {
     setNewContact({...newContact, emails: pushEmailArray})
   }
 
-  const handleFormSubmit = (e:any) => {
+  const handleFormSubmit = (e: any) => {
     e.preventDefault();
     addContact(newContact).then(res => {
       console.log(res)
+      handleClose(true)
+      window.location.reload();
     }).catch(err => {
       console.log(err)
     })
@@ -53,7 +56,7 @@ const AddContactModal: React.FC<Props> = ({ handleClose, openContact }) => {
     <div className='contactModal'>
       <div className='modal-content'>
         <div className='modal-header'>
-          <h4 className='modal-title'>Add Contact</h4>
+          <h1 className='modal-title'>Add Contact</h1>
         </div>
         <form onSubmit={handleFormSubmit} className='addContactForm'>
           <div className="modal-body">
@@ -61,6 +64,7 @@ const AddContactModal: React.FC<Props> = ({ handleClose, openContact }) => {
             <input
               type="text"
               name="firstName"
+              className="modalInput"
               value={newContact.firstName}
               onChange={(e) => setNewContact({...newContact, firstName: e.target.value})}
               required
@@ -69,6 +73,7 @@ const AddContactModal: React.FC<Props> = ({ handleClose, openContact }) => {
             <input
               type="text"
               name="lastName"
+              className="modalInput"
               value={newContact.lastName}
               onChange={(e) => setNewContact({...newContact, lastName: e.target.value})}
               required
@@ -77,18 +82,28 @@ const AddContactModal: React.FC<Props> = ({ handleClose, openContact }) => {
             <input
               type="text"
               name="email"
+              className="modalInput"
               value={newEmail}
               onChange={(e) => setNewEmail(e.target.value)}
               required
             />
             {newContact.emails.map((email, emailIdx) => <p key={emailIdx}>{email}</p>)}
-            <button type='button' onClick={() => pushEmail()}>Add Email</button>
-            <h1>Contact Modal Stuff Here</h1>
+            <button 
+              type='button' 
+              className='btn addEmlBtn' 
+              onClick={() => pushEmail()}
+            >
+              <AddCircleIcon fontSize='medium'/>
+              Add Email
+            </button>
           </div>
           <div className="modal-footer">
-            <button type="submit">Add Contact</button>
             <button 
-              className='closeBtn'
+              type="submit"
+              className="btn mainAddBtn"
+              >Add Contact</button>
+            <button 
+              className='btn closeBtn'
               onClick={() => cancelAdd()}
             >
               Close

@@ -10,6 +10,10 @@
   justify-content: center;
 }
 
+.addContactForm {
+  width: 80%
+}
+
 .modal-content {
   display: flex;
   flex-direction: column;
@@ -18,6 +22,7 @@
   width: 40vw;
   min-height: 40vh;
   background-color: #fff;
+  border-radius: 10px;
 }
 
 .modal-header, .modal-footer {
@@ -29,7 +34,27 @@
 }
 
 .modal-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 10px;
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
+  margin-bottom: 5vh;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.modalInput {
+  width: 10rem;
+  height: 1.5rem;
+  border: 1px solid rgba(8, 111, 158, 0.945)
+}
+
+.modalInput:focus {
+  outline: none;
+  border: 2px solid rgba(8, 111, 158, 0.945)
 }
