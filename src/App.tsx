@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Wrapper from './components/Wrapper'
 import Contact from './components/Contact'
 import List from './components/List'
@@ -75,9 +74,7 @@ function App() {
 
 
   return (
-    <Router>
     <div className="App">
-      <Route exact path='/'>
       <Wrapper>
         <List
           handleOpen={() => setOpenContact(true)}
@@ -110,9 +107,7 @@ function App() {
           setCurrentContact={setCurrentContact}
         />
       </Wrapper>
-      </Route>
     </div>
-    </Router>
   );
 }
 
