@@ -73,7 +73,7 @@ h6 {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: transparent !important;
+  background-color: transparent ;
   border: none;
 }
 
@@ -101,10 +101,12 @@ h6 {
 }
 
 .saveBtn {
-  color:rgba(97, 186, 228, 0.767);
+  color:rgb(255, 255, 255);
   border: 1px solid rgba(97, 186, 228, 0.767);
+  background-color: rgb(153, 223, 255);
   width: 7rem;
   height: 2rem;
+  font-size: medium;
 }
 
 .cancelBtn {
