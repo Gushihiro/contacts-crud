@@ -12,11 +12,11 @@ type Props = {
 const AddEmailModal:React.FC<Props> = ({ setOpenEmail, openEmail, currentContact, setCurrentContact }) => {
   const [newEmail, setNewEmail] = useState("")
   const pushEmail = () => {
-    let pushEmailArray = currentContact.emails;
+    let pushEmailArray:Array<string> = currentContact.emails;
     pushEmailArray.push(newEmail)
     setCurrentContact({...currentContact, emails: pushEmailArray})
   }
-  const handleClose = () => {
+  const handleClose = ():void => {
     setOpenEmail(false)
     setNewEmail("")
   }

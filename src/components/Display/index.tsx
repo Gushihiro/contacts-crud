@@ -12,7 +12,7 @@ type Props = {
 const Display: React.FC<Props> = ({ currentContact, setCurrentContact, handleOpenEmail }) => {
   const contactEmail = currentContact.emails
 
-  const handleEditForm = (e: any) => {
+  const handleEditForm = (e: any):void => {
     e.preventDefault();
     editContact(currentContact.id, currentContact).then(res => {
       window.location.reload();
@@ -27,7 +27,7 @@ const Display: React.FC<Props> = ({ currentContact, setCurrentContact, handleOpe
     })
   }
 
-  const handleDeleteContact = () => {
+  const handleDeleteContact = ():void => {
     deleteContact(currentContact.id).then(res => {
       console.log(res)
       setCurrentContact({
@@ -78,7 +78,7 @@ const Display: React.FC<Props> = ({ currentContact, setCurrentContact, handleOpe
                   type='button'
                   className='btn'
                   key={emailIdx}
-                  onClick={(e:any) => {
+                  onClick={(e:any):void => {
                       contactEmail.shift()
                       setCurrentContact({...currentContact, emails: contactEmail})
                     }
@@ -97,7 +97,7 @@ const Display: React.FC<Props> = ({ currentContact, setCurrentContact, handleOpe
           <button 
             type='button' 
             className='btn cancelBtn' 
-            onClick={() => {setCurrentContact({
+            onClick={():void => {setCurrentContact({
               id: 0,
               firstName: "",
               lastName: "",

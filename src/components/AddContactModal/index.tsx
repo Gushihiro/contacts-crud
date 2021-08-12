@@ -19,7 +19,7 @@ const AddContactModal: React.FC<Props> = ({ handleClose, openContact }) => {
   })
   const [newEmail, setNewEmail] = useState("")
   const pushEmail = () => {
-    let pushEmailArray = newContact.emails;
+    let pushEmailArray:Array<string> = newContact.emails;
     pushEmailArray.push(newEmail)
     if(pushEmailArray[0] === "") {
       pushEmailArray.shift()
@@ -27,7 +27,7 @@ const AddContactModal: React.FC<Props> = ({ handleClose, openContact }) => {
     setNewContact({...newContact, emails: pushEmailArray})
   }
 
-  const handleFormSubmit = (e: any) => {
+  const handleFormSubmit = (e: any): void => {
     e.preventDefault();
     addContact(newContact).then(res => {
       console.log(res)
@@ -38,7 +38,7 @@ const AddContactModal: React.FC<Props> = ({ handleClose, openContact }) => {
     })
   }
 
-  const cancelAdd = () => {
+  const cancelAdd = (): void => {
     handleClose(false);
     setNewContact({
       firstName: "",

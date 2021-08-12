@@ -40,7 +40,7 @@ function App() {
     emails: [""]
   })
 
-  const sortedData = (a:any, b:any) => {
+  const sortedData = (a:any, b:any):number => {
     const userA = a.firstName.toUpperCase();
     const userB = b.firstName.toUpperCase();
     
@@ -51,9 +51,9 @@ function App() {
     }
     return 0
   }
-  const sortedDataArray = userData.sort(sortedData);
+  const sortedDataArray:Array<UserDataType> = userData.sort(sortedData);
   
-  const handleCurrentContact = (clickedContact: CurrentContactType) => {
+  const handleCurrentContact = (clickedContact: CurrentContactType):object => {
     for (const user of userData) {
       if (clickedContact.id === user.id) {
         setCurrentContact(user)
