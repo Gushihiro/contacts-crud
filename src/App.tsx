@@ -53,7 +53,6 @@ function App() {
     return 0
   }
   const sortedDataArray = userData.sort(sortedData);
-  console.log(sortedDataArray)
   
   const handleCurrentContact = (clickedContact: CurrentContactType) => {
     for (const user of userData) {
